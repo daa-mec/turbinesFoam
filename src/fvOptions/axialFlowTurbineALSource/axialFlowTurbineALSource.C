@@ -699,6 +699,12 @@ void Foam::fv::axialFlowTurbineALSource::addSup
     dragCoefficient_ = force_ & freeStreamDirection_
                      / (0.5*frontalArea_*magSqr(freeStreamVelocity_));
 
+    //Total power and thrust
+    scalar rhoRef;
+    coeffs_.lookup("rhoRef") >> rhoRef;
+    power_ = torque_ * omega_ * rhoRef;
+    thrust_ = force_ & freeStreamDirection_ * rhoRef;
+
     // Print performance to terminal
     printPerf();
 

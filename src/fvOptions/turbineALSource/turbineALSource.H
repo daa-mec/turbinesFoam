@@ -122,6 +122,12 @@ protected:
         //- Torque about the axis
         scalar torque_;
 
+        //- Total thrust force
+        scalar thrust_;
+
+        //- Total power output
+        scalar power_;
+
         //- Frontal area in m^2
         scalar frontalArea_;
 

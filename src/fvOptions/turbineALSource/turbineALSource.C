@@ -127,7 +127,7 @@ void Foam::fv::turbineALSource::createOutputFile()
 
     outputFile_ = new OFstream(dir/name_ + ".csv");
 
-    *outputFile_<< "time,angle_deg,tsr,cp,cd,ct";
+    *outputFile_<< "time,angle_deg,tsr,cp,cd,ct,power,torque,thrust";
 
     forAll(blades_, i)
     {
@@ -271,7 +271,8 @@ void Foam::fv::turbineALSource::writePerf()
 {
     *outputFile_<< time_.value() << "," << angleDeg_ << ","
                 << tipSpeedRatio_ << "," << powerCoefficient_ << ","
-                << dragCoefficient_ << "," << torqueCoefficient_;
+                << dragCoefficient_ << "," << torqueCoefficient_ << ","
+                << power_ << "," << torque_ << "," << thrust_;
 
     // Write power, drag, and torque coefficients for each blade
     forAll(blades_, i)
